@@ -7,9 +7,12 @@ const {
   createUsers,
   updateUsers,
   deleteUsers,
-  addFriend,
+} = require("../../controllers/userController");
+
+const {
+addFriend,
   deleteFriend,
-} = require("../../controllers/thoughtController");
+} = require("../../controllers/userController");
 
 // Api route for GET users
 router.route("/").get(getUsers).post(createUsers);
@@ -26,7 +29,7 @@ router
 router
   .route("/:userId/friends/:friendId")
   .post(addFriend)
-  .delete(deleteReaction);
+  .delete(deleteFriend);
 
 // Export router
 module.exports = router;
