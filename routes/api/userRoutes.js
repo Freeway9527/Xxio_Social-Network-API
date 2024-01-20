@@ -1,29 +1,32 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
+// Import controllers functions
 const {
-    getThought,
-    getSingleThought,
-    createThought,
-    updateThought,
-    deleteThought,
-    addReaction,
-    deleteReaction
-} = require('../../controllers/thoughtController');
+  getUsers,
+  getSingleUsers,
+  createUsers,
+  updateUsers,
+  deleteUsers,
+  addFriend,
+  deleteFriend,
+} = require("../../controllers/thoughtController");
 
-// Api route for GET 
-router.route('/').get(getThought).post(createThought);
+// Api route for GET users
+router.route("/").get(getUsers).post(createUsers);
 
-// Api route for GET/PUT/DELETE thought by ID
-router.route('/thoughtId')
-.get(getSingleThought)
-.put(updateThought)
-.delete(deleteThought);
+// Api route for GET/PUT/DELETE user by ID
+router
+  .route("/:usersId")
+  .get(getSingleUsers)
+  .put(updateUsers)
+  .delete(deleteUsers);
 
-// Api route for POST 
-router.route('/:thoughtId/reactions').post(addReaction);
 
-// Api route for DELETE 
-router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
+// Api route for friends 
+router
+  .route("/:userId/friends/:friendId")
+  .post(addFriend)
+  .delete(deleteReaction);
 
 // Export router
 module.exports = router;
