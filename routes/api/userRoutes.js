@@ -9,10 +9,7 @@ const {
   deleteUsers,
 } = require("../../controllers/userController");
 
-const {
-addFriend,
-  deleteFriend,
-} = require("../../controllers/userController");
+const { addFriend, deleteFriend } = require("../../controllers/userController");
 
 // Api route for GET users
 router.route("/").get(getUsers).post(createUsers);
@@ -24,12 +21,8 @@ router
   .put(updateUsers)
   .delete(deleteUsers);
 
-
-// Api route for friends 
-router
-  .route("/:userId/friends/:friendId")
-  .post(addFriend)
-  .delete(deleteFriend);
+// Api route for friends
+router.route("/:userId/friends/:friendId").post(addFriend).delete(deleteFriend);
 
 // Export router
 module.exports = router;

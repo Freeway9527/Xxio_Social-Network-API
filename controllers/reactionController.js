@@ -1,55 +1,39 @@
-const Thought = require('../models/Thought');
-const User = require('../models/User');
+const Thought = require("../models/Thought");
+const User = require("../models/User");
 
-
- // Create a new thought
- async createThought(req, res) {
+// Add a reaction
+module.exports = {
+  async addReaction(req, res) {
     try {
-      const thought = await Thought.create(req.body);
-
-      if (!thought) {
-        return res.status(404).json({
-          message: "Cannot create thought, no user with the ID found.",
-        });
-      }
-
-      const updatedUser = await User.findOneAndUpdate(
+      const reaction = await Thought.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { thoughts: thought._id } },
+        { $addToSet: { reactions: req.body } },
         { new: true }
       );
 
-      if (!updatedUser) {
-        return res.status(404).json({
-          message: "Cannot create thought, no user with the ID found.",
-        });
-      }
-
-      res.json(updatedUser);
+      res.json(reaction);
     } catch (err) {
       console.error(err);
       res.status(500).json(err);
     }
   },
 
-  // Update thought by ID
-  async updateThought(req, res) {
+  // Remove a reaction
+  async removeReaction(req, res) {
     try {
-      const thought = await Thought.findOneAndUpdate(
+      await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { thoughtText: req.body.thoughtText },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { new: true }
       );
 
-      if (!thought) {
-        return res
-          .status(404)
-          .json({ message: "Could not update, User ID not found" });
-      }
-
-      res.json(thought);
+      res.json(200), json({ message: "Reaction deleted Successfully" });
     } catch (err) {
       console.error(err);
       res.status(500).json(err);
     }
   },
+};
+
+// export the module 
+module.exports = reactionController;

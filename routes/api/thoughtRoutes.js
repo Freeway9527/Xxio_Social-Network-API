@@ -10,10 +10,9 @@ const {
 } = require("../../controllers/thoughtController");
 
 const {
-    addReaction,
-    deleteReaction,
-    } = require("../../controllers/thoughtController");
-
+  addReaction,
+  deleteReaction,
+} = require("../../controllers/thoughtController");
 
 // Api route for GET thoughts
 router.route("/").get(getThought).post(createThought);
