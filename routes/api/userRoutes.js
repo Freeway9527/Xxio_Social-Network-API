@@ -19,7 +19,7 @@ router.route('/').get(getUser).post(createUser);
 
 // Api route for GET/PUT/DELETE user by ID
 router
-  .route('/:usersId')
+  .route('/:userId')
   .get(getSingleUser)
   .put(updateUser)
   .delete(deleteUser);

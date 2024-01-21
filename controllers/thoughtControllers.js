@@ -39,11 +39,11 @@ module.exports = {
         });
       }
 
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: req.params.userId },
+      const updatedUser = await User.findByIdAndUpdate(
+        req.body.userId,
         { $addToSet: { thoughts: thought._id } },
-        { new: true }
-      );
+        { runValidators: true, new: true }
+      )
 
       if (!updatedUser) {
         return res.status(404).json({
