@@ -12,9 +12,9 @@ module.exports = {
       );
 
       res.json(reaction);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 
@@ -27,10 +27,10 @@ module.exports = {
         { new: true }
       );
 
-      res.json(200), json({ message: "Reaction deleted Successfully" });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+      res.json(200), json({ message: 'Reaction Deleted Successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 };

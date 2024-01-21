@@ -6,9 +6,9 @@ module.exports = {
     try {
       const thoughts = await Thought.find();
       return res.status(200).json(thoughts);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 
@@ -22,9 +22,9 @@ module.exports = {
         return res.status(404).json({ message: "No thought with this id!" });
       }
       return res.status(200).json(thought);
-    } catch (err) {
-      console.error(err);
-      res.status(400).json(err);
+    } catch (error) {
+      console.error(error);
+      res.status(400).json(error);
     }
   },
 
@@ -52,9 +52,9 @@ module.exports = {
       }
 
       res.json(updatedUser);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 
@@ -74,9 +74,9 @@ module.exports = {
       }
 
       res.json(thought);
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 
@@ -90,13 +90,13 @@ module.exports = {
       if (!thought) {
         return res
           .status(404)
-          .json({ message: "Delete unsucessful, User ID not found" });
+          .json({ message: 'No user with this ID' });
       }
 
-      res.status(200).json({ message: "Thought sucessfully deleted" });
-    } catch (err) {
-      console.error(err);
-      res.status(500).json(err);
+      res.status(200).json({ message: 'Thought Deleted Successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json(error);
     }
   },
 };
