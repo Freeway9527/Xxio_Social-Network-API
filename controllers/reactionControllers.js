@@ -19,7 +19,7 @@ module.exports = {
   },
 
   // Remove a reaction
-  async removeReaction(req, res) {
+  async deleteReaction(req, res) {
     try {
       await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
@@ -35,5 +35,4 @@ module.exports = {
   },
 };
 
-// export the module 
-module.exports = reactionController;
+

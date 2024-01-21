@@ -1,4 +1,4 @@
-const User = require("./User");
+const User = require('../models/User');
 
 module.exports = {
     async addFriend(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
         }
 },
 
-async removeFriend(req, res) {
+async deleteFriend(req, res) {
     try {
         await User.findOneAndUpdate(
             { _id: req.params.userId },

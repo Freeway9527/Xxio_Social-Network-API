@@ -101,5 +101,3 @@ module.exports = {
   },
 };
 
-// export the module
-module.exports = thoughtController;

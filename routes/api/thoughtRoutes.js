@@ -7,12 +7,12 @@ const {
   createThought,
   updateThought,
   deleteThought,
-} = require("../../controllers/thoughtController");
+} = require("../../controllers/thoughtControllers");
 
 const {
   addReaction,
   deleteReaction,
-} = require("../../controllers/thoughtController");
+} = require("../../controllers/reactionControllers");
 
 // Api route for GET thoughts
 router.route("/").get(getThought).post(createThought);
@@ -28,7 +28,7 @@ router
 router.route("/:thoughtId/reactions").post(addReaction);
 
 // Api route for DELETE
-router.route("/:thoughtId/reactions/:reactionId").delete(deleteReaction);
+router.route("/:thoughtId/reaction/:reactionId").delete(deleteReaction);
 
 // Export router
 module.exports = router;
