@@ -39,7 +39,7 @@ Make sure that you have Node.js install, if you do not have node.js, you can vis
 You will also need to add dependencies, in your terminal type in:
 
 ```
-npm init
+npm install
 ```
 ```
 npm express
